@@ -21,11 +21,32 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function drawPen(e) {
-    //WRITE YOUR CODE HERE
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+  }
+
+  function drawRegularPoly(centerX, centerY, radius, sides){
+    // finding the angle difference between each vertex of the polygon:
+    const angleDifference = (2 * Math.PI) / sides;
+    
+    // begin drawing the shape:
+    ctx.beginPath();
+
+    // establishes the first vertex of the polygon, the first vertex being to the right, at angle 0.
+    ctx.moveTo(centerX + radius * Math.cos(0), centerY + radius * Math.sin(0));
+
+    // loop for the number of sides there are:
+    for(let i = 1; i <= sides; i++){
+        ctx.lineTo(centerX + radius * Math.cos(i * angleDifference), centerY + radius + Math.sin(i * angleDifference));
+    }
+
+    ctx.closePath();
+    ctx.stroke();
   }
 
   function drawRectangle(e) {
-    //WRITE YOUR CODE HERE
+    console.log("drawing rectangle");
+    drawRegularPoly(e.offsetX,e.offsetY,50,4)
 
     if (fillShapes) {
       //WRITE YOUR CODE HERE
@@ -90,6 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function startDraw(e) {
+    console.log("drawing started");
     isDrawing = true;
     prevMouseX = e.offsetX;
     prevMouseY = e.offsetY;
@@ -105,6 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ctx.putImageData(snapshot, 0, 0); // Restore the previous state
     switch (selectedTool) {
       case "pen":
+        console.log("using the pen");
         drawPen(e);
         break;
       case "rectangle":
@@ -136,8 +159,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function handleSliderChange() {
-    //WRITE YOUR CODE HERE
-    
+    const sizeSlider = document.querySelector("#size-slider");
+    brushWidth = sizeSlider.value;
   }
 
   function handleColorChange() {
