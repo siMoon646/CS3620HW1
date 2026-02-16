@@ -21,14 +21,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function drawPen(e) {
+        console.log(e.offsetX, e.offsetY);
         ctx.lineTo(e.offsetX, e.offsetY);
         ctx.stroke();
     }
 
-    function drawRegularPoly(centerX, centerY, radius, sides) {
+    function drawPoly(e, prevX, prevY, sides) {
         // finding the angle difference between each vertex of the polygon:
         const angleDifference = (2 * Math.PI) / sides;
 
+        // allows the user to drag the cursor to customize the size of the polygon.
+        let centerX = (e.offsetX + prevX) / 2,
+            centerY = (e.offsetY + prevY) / 2,
+            radius = Math.sqrt(Math.pow(centerX - e.offsetX, 2) + Math.pow(centerY - e.offsetY, 2));
+        
         // begin drawing the figure.
         ctx.beginPath();
 
@@ -57,32 +63,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function drawRectangle(e) {
         // console.log("drawing rectangle");
-        drawRegularPoly(prevMouseX, prevMouseY, brushWidth, 4);
+        drawPoly(e, prevMouseX, prevMouseY, 4);
     }
 
     function drawCircle(e) {
         // console.log("drawing circle");
-        drawRegularPoly(prevMouseX, prevMouseY, brushWidth, 360);
+        drawPoly(e, prevMouseX, prevMouseY, 360);
     }
 
     function drawTriangle(e) {
         // console.log("drawing triangle");
-        drawRegularPoly(prevMouseX, prevMouseY, brushWidth, 3);
+        drawPoly(e, prevMouseX, prevMouseY, 3);
     }
 
     function drawPentagon(e) {
         //console.log("drawing pentagon");
-        drawRegularPoly(prevMouseX, prevMouseY, brushWidth, 5);
+        drawPoly(e, prevMouseX, prevMouseY, 5);
     }
 
     function drawHexagon(e) {
         //console.log("drawing hexagon");
-        drawRegularPoly(prevMouseX, prevMouseY, brushWidth, 6);
+        drawPoly(e, prevMouseX, prevMouseY, 6);
     }
 
     function drawOctagon(e) {
         //console.log("drawing octagon");
-        drawRegularPoly(prevMouseX, prevMouseY, brushWidth, 8);
+        drawPoly(e, prevMouseX, prevMouseY, 8);
     }
 
     function startDraw(e) {
