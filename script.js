@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     isDrawing = false,
     selectedTool = "pen",
     brushWidth = 5;
-  let fillShapes = false;
+  let fillShapes = true;
 
   function initializeCanvas() {
     canvas.width = canvas.offsetWidth;
@@ -25,19 +25,22 @@ document.addEventListener("DOMContentLoaded", function () {
     ctx.stroke();
   }
 
-  function drawRegularPoly(centerX, centerY, radius, sides){
+  function drawRegularPoly(centerX, centerY, radius, sides) {
     // finding the angle difference between each vertex of the polygon:
     const angleDifference = (2 * Math.PI) / sides;
-    
-    // begin drawing the shape:
+
+    // begin drawing the figure.
     ctx.beginPath();
 
     // establishes the first vertex of the polygon, the first vertex being to the right, at angle 0.
     ctx.moveTo(centerX + radius * Math.cos(0), centerY + radius * Math.sin(0));
 
     // loop for the number of sides there are:
-    for(let i = 1; i <= sides; i++){
-        ctx.lineTo(centerX + radius * Math.cos(i * angleDifference), centerY + radius + Math.sin(i * angleDifference));
+    for (let i = 1; i <= sides; i++) {
+      ctx.lineTo(
+        centerX + radius * Math.cos(i * angleDifference),
+        centerY + radius * Math.sin(i * angleDifference),
+      );
     }
 
     ctx.closePath();
@@ -46,10 +49,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function drawRectangle(e) {
     console.log("drawing rectangle");
-    drawRegularPoly(e.offsetX,e.offsetY,50,4)
+    drawRegularPoly(e.offsetX, e.offsetY, 50, 4);
 
     if (fillShapes) {
-      //WRITE YOUR CODE HERE
+      console.log("filling");
+      ctx.fillStyle = document.querySelector("#color-picker").value;
+      ctx.fillRect(e.offsetX,e.offsetY,brushWidth,brushWidth);
+      ctx.fill();
     } else {
       //WRITE YOUR CODE HERE
     }
@@ -159,8 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function handleSliderChange() {
-    const sizeSlider = document.querySelector("#size-slider");
-    brushWidth = sizeSlider.value;
+    brushWidth = document.querySelector("#size-slider").value;
   }
 
   function handleColorChange() {
@@ -170,7 +175,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function handleClearCanvas() {
     //WRITE YOUR CODE HERE
-    
   }
 
   function handleFillShapesChange() {
