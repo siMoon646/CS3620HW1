@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
         prevMouseX = e.offsetX;
         prevMouseY = e.offsetY;
         ctx.beginPath();
-        ctx.lineWidth = brushWidth;
+        ctx.lineWidth = brushWidth/3;
         ctx.strokeStyle = document.querySelector("#color-picker").value;
         ctx.fillStyle = ctx.strokeStyle;
         snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
