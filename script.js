@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ctx.stroke();
 
         if (fillShapes) {
-            console.log("filling");
+            // console.log("filling");
             ctx.fillStyle = document.querySelector("#color-picker").value;
             ctx.fill();
         } else {
@@ -56,33 +56,37 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function drawRectangle(e) {
-        console.log("drawing rectangle");
+        // console.log("drawing rectangle");
         drawRegularPoly(e.offsetX, e.offsetY, brushWidth, 4);
     }
 
     function drawCircle(e) {
-        console.log("drawing circle");
+        // console.log("drawing circle");
         drawRegularPoly(e.offSetX, e.offSetY, brushWidth, 360);
     }
 
     function drawTriangle(e) {
-        //WRITE YOUR CODE HERE
+        // console.log("drawing triangle");
+        drawRegularPoly(e.offsetX, e.offsetY, brushWidth, 3);
     }
 
     function drawPentagon(e) {
-        //WRITE YOUR CODE HERE
+        //console.log("drawing pentagon");
+        drawRegularPoly(e.offSetX,e.offSetY, brushWidth, 5);
     }
 
     function drawHexagon(e) {
-        //WRITE YOUR CODE HERE
+        //console.log("drawing hexagon");
+        drawRegularPoly(e.offSetX,e.offsetY, brushWidth, 6);
     }
 
     function drawOctagon(e) {
-        //WRITE YOUR CODE HERE
+        //console.log("drawing octagon");
+        drawRegularPoly(e.offsetX, e.offsetY, brushWidth, 8);
     }
 
     function startDraw(e) {
-        console.log("drawing started");
+        // console.log("drawing started");
         isDrawing = true;
         prevMouseX = e.offsetX;
         prevMouseY = e.offsetY;
@@ -96,6 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function draw(e) {
         if (!isDrawing) return;
         ctx.putImageData(snapshot, 0, 0); // Restore the previous state
+        console.log(selectedTool);
         switch (selectedTool) {
             case "pen":
                 console.log("using the pen");
