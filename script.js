@@ -57,32 +57,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function drawRectangle(e) {
         // console.log("drawing rectangle");
-        drawRegularPoly(e.offsetX, e.offsetY, brushWidth, 4);
+        drawRegularPoly(prevMouseX, prevMouseY, brushWidth, 4);
     }
 
     function drawCircle(e) {
         // console.log("drawing circle");
-        drawRegularPoly(e.offSetX, e.offSetY, brushWidth, 360);
+        drawRegularPoly(prevMouseX, prevMouseY, brushWidth, 360);
     }
 
     function drawTriangle(e) {
         // console.log("drawing triangle");
-        drawRegularPoly(e.offsetX, e.offsetY, brushWidth, 3);
+        drawRegularPoly(prevMouseX, prevMouseY, brushWidth, 3);
     }
 
     function drawPentagon(e) {
         //console.log("drawing pentagon");
-        drawRegularPoly(e.offSetX,e.offSetY, brushWidth, 5);
+        drawRegularPoly(prevMouseX, prevMouseY, brushWidth, 5);
     }
 
     function drawHexagon(e) {
         //console.log("drawing hexagon");
-        drawRegularPoly(e.offSetX,e.offsetY, brushWidth, 6);
+        drawRegularPoly(prevMouseX, prevMouseY, brushWidth, 6);
     }
 
     function drawOctagon(e) {
         //console.log("drawing octagon");
-        drawRegularPoly(e.offsetX, e.offsetY, brushWidth, 8);
+        drawRegularPoly(prevMouseX, prevMouseY, brushWidth, 8);
     }
 
     function startDraw(e) {
