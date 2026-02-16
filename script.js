@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         isDrawing = false,
         selectedTool = "pen",
         brushWidth = document.querySelector("#size-slider").value;
-    let fillShapes = true;
+    let fillShapes = document.querySelector("#fill-shapes").checked;
 
     function initializeCanvas() {
         canvas.width = canvas.offsetWidth;
@@ -103,7 +103,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(selectedTool);
         switch (selectedTool) {
             case "pen":
-                console.log("using the pen");
                 drawPen(e);
                 break;
             case "rectangle":
