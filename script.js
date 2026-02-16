@@ -45,75 +45,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
     ctx.closePath();
     ctx.stroke();
+
+    if (fillShapes) {
+      console.log("filling");
+      ctx.fillStyle = document.querySelector("#color-picker").value;
+      ctx.fillRect(centerX, centerY,brushWidth,brushWidth);
+      ctx.fill();
+    } else {
+      return;
+    }
   }
 
   function drawRectangle(e) {
     console.log("drawing rectangle");
     drawRegularPoly(e.offsetX, e.offsetY, 50, 4);
-
-    if (fillShapes) {
-      console.log("filling");
-      ctx.fillStyle = document.querySelector("#color-picker").value;
-      ctx.fillRect(e.offsetX,e.offsetY,brushWidth,brushWidth);
-      ctx.fill();
-    } else {
-      //WRITE YOUR CODE HERE
-    }
   }
 
   function drawCircle(e) {
     //WRITE YOUR CODE HERE
 
-    if (fillShapes) {
-      ctx.fillStyle = document.querySelector("#color-picker").value;
-      //WRITE YOUR CODE HERE
-    } else {
-      //WRITE YOUR CODE HERE
-    }
   }
 
   function drawTriangle(e) {
     //WRITE YOUR CODE HERE
 
-    if (fillShapes) {
-      ctx.fillStyle = document.querySelector("#color-picker").value;
-      //WRITE YOUR CODE HERE
-    } else {
-      //WRITE YOUR CODE HERE
-    }
   }
 
   function drawPentagon(e) {
     //WRITE YOUR CODE HERE
 
-    if (fillShapes) {
-      ctx.fillStyle = document.querySelector("#color-picker").value;
-      //WRITE YOUR CODE HERE
-    } else {
-      //WRITE YOUR CODE HERE
-    }
   }
 
   function drawHexagon(e) {
     //WRITE YOUR CODE HERE
 
-    if (fillShapes) {
-      ctx.fillStyle = document.querySelector("#color-picker").value;
-      //WRITE YOUR CODE HERE
-    } else {
-      //WRITE YOUR CODE HERE
-    }
   }
 
   function drawOctagon(e) {
     //WRITE YOUR CODE HERE
 
-    if (fillShapes) {
-      ctx.fillStyle = document.querySelector("#color-picker").value;
-      //WRITE YOUR CODE HERE
-    } else {
-      //WRITE YOUR CODE HERE
-    }
   }
 
   function startDraw(e) {
