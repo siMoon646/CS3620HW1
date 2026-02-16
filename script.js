@@ -143,7 +143,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function handleClearCanvas() {
-        //WRITE YOUR CODE HERE
+        // console.log("clearing");
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        setCanvasBackground();
     }
 
     function handleFillShapesChange() {
