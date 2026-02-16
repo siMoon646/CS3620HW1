@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
         snapshot,
         isDrawing = false,
         selectedTool = "pen",
-        brushWidth = 5;
+        brushWidth = document.querySelector("#size-slider").value;
     let fillShapes = true;
 
     function initializeCanvas() {
@@ -49,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (fillShapes) {
             console.log("filling");
             ctx.fillStyle = document.querySelector("#color-picker").value;
-            ctx.fillRect(centerX, centerY, brushWidth, brushWidth);
             ctx.fill();
         } else {
             return;
@@ -58,11 +57,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function drawRectangle(e) {
         console.log("drawing rectangle");
-        drawRegularPoly(e.offsetX, e.offsetY, 50, 4);
+        drawRegularPoly(e.offsetX, e.offsetY, brushWidth, 4);
     }
 
     function drawCircle(e) {
-        //WRITE YOUR CODE HERE
+        console.log("drawing circle");
+        drawRegularPoly(e.offSetX, e.offSetY, brushWidth, 360);
     }
 
     function drawTriangle(e) {
